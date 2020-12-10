@@ -4,18 +4,18 @@ use yii\helpers\Html;
 use yii\grid\GridView;
 
 /* @var $this yii\web\View */
-/* @var $searchModel app\models\PersonsSearch */
+/* @var $searchModel app\models\CompetencesSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Persons';
+$this->title = 'Competences';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="persons-index">
+<div class="competences-index">
 
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a('Create Persons', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Create Competences', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
@@ -27,18 +27,7 @@ $this->params['breadcrumbs'][] = $this->title;
             ['class' => 'yii\grid\SerialColumn'],
 
             'id',
-            'nom',
-            'age',
-            [
-                'label' => 'Offices name',
-                'value' => 'offices.label'
-            ],
-            [
-                'label' => 'Competences',
-                'value' => function($model){
-                    return join(',', yii\helpers\ArrayHelper::map($model->competences, 'id', 'domaine'));
-                }
-            ],
+            'domaine',
 
             ['class' => 'yii\grid\ActionColumn'],
         ],

@@ -30,7 +30,6 @@ class Persons extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['id'], 'required'],
             [['id', 'age', 'offices_id'], 'integer'],
             [['nom'], 'string', 'max' => 50],
             [['id'], 'unique'],
@@ -59,5 +58,16 @@ class Persons extends \yii\db\ActiveRecord
     public function getOffices()
     {
         return $this->hasOne(Offices::className(), ['id' => 'offices_id']);
+    }
+
+    public function getCompetences(){
+        return $this
+        ->hasMany(
+            Competences::className(),
+            ['id' => 'competences_id']
+        )->viaTable(
+            'persons_competences',
+            ['persons_id' => 'id']
+        );
     }
 }

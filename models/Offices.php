@@ -28,7 +28,6 @@ class Offices extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['id'], 'required'],
             [['id'], 'integer'],
             [['label'], 'string', 'max' => 50],
             [['id'], 'unique'],
